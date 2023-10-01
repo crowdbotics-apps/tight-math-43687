@@ -1,23 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { apiService } from "./api"
-export const rest_auth_registration_verify_email_create = createAsyncThunk(
-  "verifyEmails/rest_auth_registration_verify_email_create",
+export const geolocationapi_post_geolocation_v1_geolocate_create = createAsyncThunk(
+  "geolocationapi_response_post_Newdatacalls/geolocationapi_post_geolocation_v1_geolocate_create",
   async payload => {
-    const response = await apiService.rest_auth_registration_verify_email_create(
+    const response = await apiService.geolocationapi_post_geolocation_v1_geolocate_create(
       payload
     )
     return response.data
   }
 )
 const initialState = { entities: [], api: { loading: "idle", error: null } }
-const verifyEmailsSlice = createSlice({
-  name: "verifyEmails",
+const geolocationapi_response_post_NewdatacallsSlice = createSlice({
+  name: "geolocationapi_response_post_Newdatacalls",
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(
-        rest_auth_registration_verify_email_create.pending,
+        geolocationapi_post_geolocation_v1_geolocate_create.pending,
         (state, action) => {
           if (state.api.loading === "idle") {
             state.api.loading = "pending"
@@ -25,7 +25,7 @@ const verifyEmailsSlice = createSlice({
         }
       )
       .addCase(
-        rest_auth_registration_verify_email_create.fulfilled,
+        geolocationapi_post_geolocation_v1_geolocate_create.fulfilled,
         (state, action) => {
           if (state.api.loading === "pending") {
             state.entities.push(action.payload)
@@ -34,7 +34,7 @@ const verifyEmailsSlice = createSlice({
         }
       )
       .addCase(
-        rest_auth_registration_verify_email_create.rejected,
+        geolocationapi_post_geolocation_v1_geolocate_create.rejected,
         (state, action) => {
           if (state.api.loading === "pending") {
             state.api.error = action.error
@@ -45,6 +45,6 @@ const verifyEmailsSlice = createSlice({
   }
 })
 export default {
-  rest_auth_registration_verify_email_create,
-  slice: verifyEmailsSlice
+  geolocationapi_post_geolocation_v1_geolocate_create,
+  slice: geolocationapi_response_post_NewdatacallsSlice
 }
